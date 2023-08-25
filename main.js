@@ -29,3 +29,22 @@ function buildGraph(edges) {
 }
 
 const roadGraph = buildGraph(roads);
+
+/*
+^^^^^^^
+Given an array of edges, buildGraph creates a map object that for each
+node, stores an array of connected nodes
+Using the split method to split up the road strings of form 'Start-End'
+to 'start' and 'end' as separate strings
+*/
+
+class VillageState {
+    constructor(place, parcels) {
+        this.place = place;
+        this.parcels = parcels;
+    }
+
+    move(destination) {
+        if (!roadGraph)
+    }
+}
