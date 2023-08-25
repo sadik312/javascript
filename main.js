@@ -56,3 +56,12 @@ class VillageState {
         }
     }
 }
+
+/*
+move method checks whether there is a road going from current place to destination
+if not, returns old state since it is not a valid move
+then creates new state with destination as robot's new place
+also needs to create new set of parcels that robot is carrying
+parcels also need to be moved to the new place
+
+*/
