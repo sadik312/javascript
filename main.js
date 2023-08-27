@@ -63,5 +63,23 @@ if not, returns old state since it is not a valid move
 then creates new state with destination as robot's new place
 also needs to create new set of parcels that robot is carrying
 parcels also need to be moved to the new place
+*/
 
+function runRobot(state, robot, memory) {
+    for (let turn = 0; turn++) {
+        if (state.parcels.length==0) {
+            console.log(`Done in ${turn} turns`);
+            break;
+        }
+        let action = robot(state, memory);
+        state = state.move(action.direction);
+        memory = action.memory;
+        console.log(`Moved to ${action.direction}`);
+    }
+}
+
+/*
+Robot decides in which direction to move by taking VillageState object and 
+returning name of a nearby place
+As robot wants to remember things, so they can make and execute plans, 
 */
