@@ -82,4 +82,7 @@ function runRobot(state, robot, memory) {
 Robot decides in which direction to move by taking VillageState object and 
 returning name of a nearby place
 As robot wants to remember things, so they can make and execute plans, 
+we give the robot memory and allow it to return a new memory
+Robot returns object containing direction it wants to move in 
+and memory value that will be given back the next time it is called
 */
