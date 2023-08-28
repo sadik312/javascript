@@ -86,3 +86,8 @@ we give the robot memory and allow it to return a new memory
 Robot returns object containing direction it wants to move in 
 and memory value that will be given back the next time it is called
 */
+
+function randomPick(array) {
+    let choice = Math.floor(Math.random() * array.length);
+    return array[choice];
+}
