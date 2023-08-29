@@ -6,22 +6,22 @@ const roads = [
     "Alice's House-Bob's House", "Alice's House-Cabin",
     "Alice's House-Post Office", "Bob's House-Town Hall",
     "Daria's House-Ernie's House", "Daria's House-Town Hall",
-    "Ernie's House-Grete's House", "Grete's House-Farm"
+    "Ernie's House-Grete's House", "Grete's House-Farm",
     "Grete's House-Shop", "Marketplace-Farm",
     "Marketplace-Post Office", "Marketplace-Shop",
     "Marketplace-Town Hall", "Shop-Town Hall"
-]
+];
 
 function buildGraph(edges) {
     let graph = Object.create(null);
     function addEdge(from, to) {
         if (graph[from] == null) {
-            graph[from] == [to];
+            graph[from] = [to];
         } else {
             graph[from].push(to);
         }
     }
-    for (let [from, to] of edges.map(r.split("-"))) {
+    for (let [from, to] of edges.map(r => r.split("-"))) {
         addEdge(from, to);
         addEdge(to, from);
     }
@@ -43,7 +43,6 @@ class VillageState {
         this.place = place;
         this.parcels = parcels;
     }
-
     move(destination) {
         if (!roadGraph[this.place].includes(destination)) {
             return this;
@@ -65,8 +64,18 @@ also needs to create new set of parcels that robot is carrying
 parcels also need to be moved to the new place
 */
 
+let first = new VillageState(
+    "Post Office",
+    [{place: "Post Office", address: "Alice's House"}]
+);
+let next = first.move("Alice's House");
+
+console.log(next.place);
+console.log(next.parcels);
+console.log(first.place);
+
 function runRobot(state, robot, memory) {
-    for (let turn = 0; turn++) {
+    for (let turn = 0;; turn++) {
         if (state.parcels.length==0) {
             console.log(`Done in ${turn} turns`);
             break;
@@ -102,9 +111,11 @@ VillageState.random = function(parcelCount = 5) {
         let address = randomPick(Object.keys(roadGraph));
         let place;
         do {
-            place = this.randomPick(Object.apply.keys(roadGraph));
+            place = randomPick(Object.keys(roadGraph));
         } while (place == address);
         parcels.push({place, address});
     }
     return new VillageState("Post Office ", parcels);
 };
+
+runRobot(VillageState.random(), randomRobot);
