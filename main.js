@@ -100,6 +100,13 @@ function runRobot(state, robot, memory) {
     }
 }
 
+function routeRobot(state, memory) {
+    if (memory.length == 0) {
+        memory = mailRoute;
+    }
+    return {direction: memory[0], memory: memory.slice(1)};
+}
+
 /*
 Robot decides in which direction to move by taking VillageState object and 
 returning name of a nearby place
@@ -129,4 +136,5 @@ VillageState.random = function (parcelCount = 5) {
     }
     return new VillageState("Post Office", parcels);
 };
-runRobot(VillageState.random(), randomRobot);
+runRobot(VillageState.random(), randomRobot); // old slower route
+runRobot(VillageState.random(), routeRobot, []); // new faster route
