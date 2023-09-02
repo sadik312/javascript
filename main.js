@@ -136,5 +136,26 @@ VillageState.random = function (parcelCount = 5) {
     }
     return new VillageState("Post Office", parcels);
 };
+
+/*
+To make robot work more efficiently, it has to be be able to deliberatoely move toward
+a given parcel or delivery destination
+We want to search for a route that starts at A, doesn't visit the same place twice
+This helps consider the shortest  
+*/
+
+function findRoute(graph, from, to) {
+    let work = [{at: from, route: []}];
+    for (let i=0; i<work.length; i++) {
+        let {at , route} = work[i];
+        for (let place of graph[at]) {
+            if (place == to) return route.concat(place);
+            if (!work.some(w => w.at == place)) {
+                work.push({at: place, route: route.concat(place)});
+            }
+        }
+    }
+}
+
 runRobot(VillageState.random(), randomRobot); // old slower route
 runRobot(VillageState.random(), routeRobot, []); // new faster route
