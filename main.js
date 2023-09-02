@@ -27,7 +27,6 @@ function buildGraph(edges) {
     }
     return graph;
 }
-
 const roadGraph = buildGraph(roads);
 
 /*
@@ -49,7 +48,7 @@ class VillageState {
         } else {
             let parcels = this.parcels.map(p => {
                 if (p.place != this.place) return p;
-                return {place: destination, address: p.address};
+                return { place: destination, address: p.address };
             }).filter(p => p.place != p.address);
             return new VillageState(destination, parcels);
         }
@@ -66,17 +65,24 @@ parcels also need to be moved to the new place
 
 let first = new VillageState(
     "Post Office",
-    [{place: "Post Office", address: "Alice's House"}]
+    [{ place: "Post Office", address: "Alice's House" }]
 );
 let next = first.move("Alice's House");
-
 console.log(next.place);
+// → Alice's House
 console.log(next.parcels);
+// → []
 console.log(first.place);
+// → Post Office
+
+let object = Object.freeze({value: 5});
+object.value = 10;
+console.log(object.value);
+// → 5
 
 function runRobot(state, robot, memory) {
-    for (let turn = 0;; turn++) {
-        if (state.parcels.length==0) {
+    for (let turn = 0; ; turn++) {
+        if (state.parcels.length == 0) {
             console.log(`Done in ${turn} turns`);
             break;
         }
@@ -100,22 +106,20 @@ function randomPick(array) {
     let choice = Math.floor(Math.random() * array.length);
     return array[choice];
 }
-
 function randomRobot(state) {
-    return {direction: randomPick(roadGraph[state.place])};
+    return { direction: randomPick(roadGraph[state.place]) };
 }
 
-VillageState.random = function(parcelCount = 5) {
+VillageState.random = function (parcelCount = 5) {
     let parcels = [];
-    for (let i=0; i<parcelCount; i++) {
+    for (let i = 0; i < parcelCount; i++) {
         let address = randomPick(Object.keys(roadGraph));
         let place;
         do {
             place = randomPick(Object.keys(roadGraph));
         } while (place == address);
-        parcels.push({place, address});
+        parcels.push({ place, address });
     }
-    return new VillageState("Post Office ", parcels);
+    return new VillageState("Post Office", parcels);
 };
-
 runRobot(VillageState.random(), randomRobot);
