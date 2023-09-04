@@ -166,6 +166,7 @@ Search starts with start position and empty route
 Search then operates by taking next item in list and exploring that, meaning
 all roads going from that place are looked at
 If one of them is a goal, a finished route can be returned
+If we haven't looked at this place before, new item is added to list
 */
 
 runRobot(VillageState.random(), randomRobot); // old slower route
