@@ -157,5 +157,16 @@ function findRoute(graph, from, to) {
     }
 }
 
+/*
+Exploration has to be done in correct order - places that were reached first
+have to be explored first
+We cannot immediately explore a place as that would mean places reached from there 
+would also be explored immediately and there may be a shorter path of exploration
+Search starts with start position and empty route
+Search then operates by taking next item in list and exploring that, meaning
+all roads going from that place are looked at
+If one of them is a goal, a finished route can be returned
+*/
+
 runRobot(VillageState.random(), randomRobot); // old slower route
 runRobot(VillageState.random(), routeRobot, []); // new faster route
