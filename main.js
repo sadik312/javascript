@@ -169,5 +169,17 @@ If one of them is a goal, a finished route can be returned
 If we haven't looked at this place before, new item is added to list
 */
 
+function goalOrientedRobot({place, parcels}, route) {
+    if (route.length ==0) {
+        let parcel = parcels[0];
+        if (parcel.place != place) {
+            route = findRoute(roadGraph, place, parcel.place);
+        } else {
+            route = findRoute(roadGraph, place, parcel.address);
+        }
+    }
+    return {direction: route[0], memory: route.slice(1)};
+}
+
 runRobot(VillageState.random(), randomRobot); // old slower route
 runRobot(VillageState.random(), routeRobot, []); // new faster route
