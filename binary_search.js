@@ -39,23 +39,6 @@ let recursiveFunction = function (arr, x, start, end) {
     }
 };
 
-// Driver code
-let arr = [1, 3, 5, 7, 9];
-let x = 5;
-
-if (recursiveFunction(arr, x, 0, arr.length - 1)) {
-    console.log("Element found!<br>");
-} else {
-    console.log("Element not found!<br>");
-}
-
-x = 6;
-
-if (recursiveFunction(arr, x, 0, arr.length-1)) {
-    console.log("Element found!");
-} else {
-    console.log("Element not found!");
-}
 
 // Time Complexity: O(logN)
 
@@ -85,5 +68,23 @@ let iterativeFunction = function (arr, x) {
         }
         return false;
     }
+};
+
+
+// Driver code for both algorithm types
+let arr = [1, 3, 5, 7, 9];
+let x = 5;
+
+if (recursiveFunction(arr, x, 0, arr.length - 1)) {
+    console.log("Element found!<br>");
+} else {
+    console.log("Element not found!<br>");
 }
 
+x = 6;
+
+if (recursiveFunction(arr, x, 0, arr.length-1)) {
+    console.log("Element found!");
+} else {
+    console.log("Element not found!");
+}
