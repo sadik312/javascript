@@ -37,23 +37,23 @@ let recursiveFunction = function (arr, x, start, end) {
         // search RIGHT half of mid
         return recursiveFunction(arr, x, mid + 1, end);
     }
+};
 
-    // Driver code
-    let arr = [1, 3, 5, 7, 9];
-    let x = 5;
+// Driver code
+let arr = [1, 3, 5, 7, 9];
+let x = 5;
 
-    if (recursiveFunction(arr, x, 0, arr.length - 1)) {
-        document.write("Element found!<br>");
-    } else {
-        document.write("Element not found!<br>");
-    }
+if (recursiveFunction(arr, x, 0, arr.length - 1)) {
+    console.log("Element found!<br>");
+} else {
+    console.log("Element not found!<br>");
+}
 
-    x = 6;
+x = 6;
 
-    if (recursiveFunction(arr, x, 0, arr.length-1)) {
-        document.write("Element found!<br>");
-    } else {
-        document.write("Element not found!<br>");
-    }
+if (recursiveFunction(arr, x, 0, arr.length-1)) {
+    console.log("Element found!");
+} else {
+    console.log("Element not found!");
+}
 
-}								
