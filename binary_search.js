@@ -13,3 +13,32 @@ Recursive Approach:
 4. If greater, call the same function with ending index = middle-1 and repeat step 1
 5. If smaller, call the same function with starting index = middle+1 and repeat step 1
 */
+
+let recursiveFunction = function (arr, x, start, end) {
+   // Base Condition
+   if (start > end){
+    return false;
+   } 
+
+   // Find middle index
+   let mid = Math.floor((start + end)/2);
+
+   // Compare mid with given key x
+   if (arr[mid]===x) {
+    return true;
+   }
+
+   // If element at mid is greater than x,
+   // search LEFT half of mid
+   if (arr[mid] > x) {
+    return recursiveFunction(arr, x, start, mid-1);
+   } else {
+    // If element at mid is smaller than x,
+    // search RIGHT half of mid
+    return recursiveFunction(arr, x, mid+1, end);
+   }
+
+   // Driver code
+   let arr = [1, 3, 5, 7, 9];
+   let x = 5;
+}
