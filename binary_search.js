@@ -57,3 +57,33 @@ if (recursiveFunction(arr, x, 0, arr.length-1)) {
     console.log("Element not found!");
 }
 
+// Time Complexity: O(logN)
+
+/*
+Iterative Approach
+Instead of recursion, a while loop is used
+Loop runs untils it hits the base condition 
+*/
+
+let iterativeFunction = function (arr, x) {
+    let start = 0, end = arr.length-1;
+
+    // Iterative while start does not meet end
+    while (start<=end) {
+
+        // Find mid index
+        let mid = Match.floor((start + end) / 2);
+
+        // If element is equal to mid, return True
+        if (arr[mid]===x) {
+            return true;
+        // Else look in left or right half accordingly
+        } else if (arr[mid] < x) {
+            start = mid + 1;
+        } else {
+            end = mid - 1;
+        }
+        return false;
+    }
+}
+
