@@ -70,6 +70,8 @@ let iterativeFunction = function (arr, x) {
     }
 };
 
+// Time Complexity: O(logN)
+
 
 // Driver code for both algorithm types
 let arr = [1, 3, 5, 7, 9];
