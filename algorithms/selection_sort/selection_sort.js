@@ -18,4 +18,5 @@ function selctionSort(arr) {
             arr[min] = temp;
         }
     }
+    return arr;
 }
