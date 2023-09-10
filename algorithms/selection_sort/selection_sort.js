@@ -1,6 +1,6 @@
 // Selection Sort
 
-function selctionSort(arr) {
+function selectionSort(arr) {
     let n = arr.length;
 
     for (let i=0; i<n; i++) {
@@ -20,3 +20,8 @@ function selctionSort(arr) {
     }
     return arr;
 }
+
+// Driver code
+let arr = [5, 2, 4, 1, 3];
+selectionSort(arr);
+console.log(arr);
